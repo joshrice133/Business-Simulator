@@ -9,6 +9,8 @@ class Employee:
         self.training = False
     def work(self):
     def train(self):
+        # Does this ever become False?
+        # There needs to be a way to ensure that this loop breaks
         while self.training == True:
             self.laborHrs = 0
     def quit(self):
