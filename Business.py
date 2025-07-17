@@ -32,9 +32,8 @@ class Business:
                 # I don't actually know if "throw" is a python keyword (it might be java)
                 # But there should be a way to invoke an exception in python
                 throw OutOfStock
-            else:
-                self.products[product_name] -= 1
-                return Product(product_name)
+            self.products[product_name] -= 1
+            return Product(product_name)
         except OutOfStock:
             return "OutOfStock!"
 
@@ -82,8 +81,17 @@ class Business:
             if rollB == 1 and customer.productAwareness[product] == True:
                 customer.interest[product] = customer.interest[product] + 5
     def buyMats(self):
-        
-    def hire(self):
-    def fire(self):
+
+    def hire(self, **kwargs):
+        self.employees.append(Employee(kwargs))
+
+    def fire(self, employee: Employee):
+        try:
+            if employee not in self.employees:
+                raise NoEmployee
+            self.employees.remove(employee)
+        except NoEmployee:
+            return "No employee found"
+
     def rnd(self):
     def expand(self):
